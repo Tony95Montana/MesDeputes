@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textViewDeputyName"
+        android:layout_width="match_parent"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"
+        android:text="Prénom Nom"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textViewDeputyCirco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Dept, Circonscription"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageViewDeputy"
+        android:minWidth="280dp"
+        android:minHeight="230dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:paddingVertical="3dp"
+        android:src="@mipmap/marianne"
+        android:contentDescription="image du député"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="5dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/textViewDeputyGroupe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Groupe"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textViewDeputyEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="email@toto.fr"
+                android:autoLink="email"
+                android:linksClickable="true"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textViewDeputyDateNaissance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XXXX/XX/XX"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textViewDeputyLieuNaissance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Argenteuil (Val-D'Oise)"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textViewDeputySexe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Homme/Femme"
+                tools:ignore="HardcodedText" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingHorizontal="5dp">
+                <ListView
+                    android:id="@+id/listViewVote"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    tools:listitem="@layout/item_vote"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:paddingHorizontal="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewFacebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="70dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingVertical="3dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@mipmap/facebook"
+                    android:contentDescription="image de facebook"
+                    tools:ignore="HardcodedText"/>
+                <ImageView
+                    android:id="@+id/imageViewTwitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="70dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingVertical="3dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@mipmap/x"
+                    tools:ignore="HardcodedText"
+                    android:contentDescription="image de twitter" />
+                <ImageView
+                    android:id="@+id/imageViewInsta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="70dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingVertical="3dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@mipmap/instagram"
+                    android:contentDescription="image instagram"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
