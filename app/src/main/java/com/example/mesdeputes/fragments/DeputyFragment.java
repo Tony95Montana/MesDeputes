@@ -1,19 +1,28 @@
-package com.example.mesdeputes;
+package com.example.mesdeputes.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
+import com.example.mesdeputes.R;
+import com.example.mesdeputes.models.Deputy;
+import com.example.mesdeputes.models.Vote;
+import com.example.mesdeputes.models.VoteAdapter;
+import com.example.mesdeputes.services.ApiServices;
+import com.example.mesdeputes.services.VoteObserver;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DeputyActivity extends AppCompatActivity implements VoteObserver {
+public class DeputyFragment extends Fragment implements VoteObserver {
 
     private ImageView imageView, imageViewTwitter, imageViewFacebook, imageViewInstagram;
     private ArrayList<Vote> votes;
@@ -21,24 +30,25 @@ public class DeputyActivity extends AppCompatActivity implements VoteObserver {
     private ListView listViewVote;
     private TextView textViewName, textViewCirco, textViewEmail, textViewGroupe, textViewDateNaissance, textViewLieuNaissance, textViewSexe;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
+        @SuppressLint("InflateParams") View v = inflater.inflate(R.layout.fragment_deputy, null);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deputy);
-        textViewName = findViewById(R.id.textViewDeputyName);
-        textViewCirco = findViewById(R.id.textViewDeputyCirco);
-        textViewGroupe = findViewById(R.id.textViewDeputyGroupe);
-        textViewEmail = findViewById(R.id.textViewDeputyEmail);
-        textViewDateNaissance = findViewById(R.id.textViewDeputyDateNaissance);
-        textViewLieuNaissance = findViewById(R.id.textViewDeputyLieuNaissance);
-        textViewSexe = findViewById(R.id.textViewDeputySexe);
-        imageViewTwitter = findViewById(R.id.imageViewTwitter);
-        imageViewFacebook = findViewById(R.id.imageViewFacebook);
-        imageViewInstagram = findViewById(R.id.imageViewInsta);
-        imageView= findViewById(R.id.imageViewDeputy);
-        listViewVote = findViewById(R.id.listViewVote);
+        textViewName = v.findViewById(R.id.textViewDeputyName);
+        textViewCirco = v.findViewById(R.id.textViewDeputyCirco);
+        textViewGroupe = v.findViewById(R.id.textViewDeputyGroupe);
+        textViewEmail = v.findViewById(R.id.textViewDeputyEmail);
+        textViewDateNaissance = v.findViewById(R.id.textViewDeputyDateNaissance);
+        textViewLieuNaissance = v.findViewById(R.id.textViewDeputyLieuNaissance);
+        textViewSexe = v.findViewById(R.id.textViewDeputySexe);
+        imageViewTwitter = v.findViewById(R.id.imageViewTwitter);
+        imageViewFacebook = v.findViewById(R.id.imageViewFacebook);
+        imageViewInstagram = v.findViewById(R.id.imageViewInsta);
+        imageView = v.findViewById(R.id.imageViewDeputy);
+        listViewVote = v.findViewById(R.id.listViewVote);
         votes = new ArrayList<>();
         adapterVote = new VoteAdapter(votes, this);
         listViewVote.setAdapter(adapterVote);
+        return v;
     }
     @Override
     public void onReceiveVoteDeputy(Vote vote) {
@@ -49,10 +59,7 @@ public class DeputyActivity extends AppCompatActivity implements VoteObserver {
         }
     }
     @SuppressLint("SetTextI18n")
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Deputy deputy = (Deputy) getIntent().getSerializableExtra("deputy");
+    public void onSelectDeputy(Deputy deputy) {
         textViewName.setText(Objects.requireNonNull(deputy).getFirstname()+" "+deputy.getLastname());
         textViewCirco.setText(deputy.getDepartment()+", "+
                 deputy.getNameCirco()+ " "+ deputy.getNumCirco()+
@@ -83,7 +90,7 @@ public class DeputyActivity extends AppCompatActivity implements VoteObserver {
         else {
             imageViewFacebook.setImageResource(R.color.white);
         }
-        ApiServices.loadDeputyAvatar(this, deputy.getNameForAvatar(), imageView);
-        ApiServices.callVote(this, deputy.getFirstname().replace(" ", "-")+'-'+deputy.getLastname().replace(" ", "-"), this);
+        ApiServices.loadDeputyAvatar(getContext(), deputy.getNameForAvatar(), imageView);
+        ApiServices.callVote(getContext(), deputy.getFirstname().replace(" ", "-")+'-'+deputy.getLastname().replace(" ", "-"), this);
     }
 }
