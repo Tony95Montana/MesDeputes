@@ -1,4 +1,4 @@
-package com.example.mesdeputes;
+package com.example.mesdeputes.models;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mesdeputes.R;
+import com.example.mesdeputes.fragments.DeputyFragment;
+
 import java.util.ArrayList;
 
 public class VoteAdapter extends BaseAdapter {

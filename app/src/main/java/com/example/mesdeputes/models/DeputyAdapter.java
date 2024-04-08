@@ -1,4 +1,4 @@
-package com.example.mesdeputes;
+package com.example.mesdeputes.models;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mesdeputes.services.ApiServices;
+import com.example.mesdeputes.R;
+
 import java.util.ArrayList;
 
 public class DeputyAdapter extends BaseAdapter {

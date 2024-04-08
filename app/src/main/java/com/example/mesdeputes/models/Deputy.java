@@ -1,4 +1,4 @@
-package com.example.mesdeputes;
+package com.example.mesdeputes.models;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

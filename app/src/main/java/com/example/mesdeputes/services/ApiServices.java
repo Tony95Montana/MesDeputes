@@ -1,8 +1,7 @@
-package com.example.mesdeputes;
+package com.example.mesdeputes.services;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.widget.ImageView;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -10,6 +9,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mesdeputes.models.Deputy;
+import com.example.mesdeputes.models.Vote;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -29,6 +29,7 @@ public class DeputyFragment extends Fragment implements VoteObserver {
     private VoteAdapter adapterVote;
     private ListView listViewVote;
     private TextView textViewName, textViewCirco, textViewEmail, textViewGroupe, textViewDateNaissance, textViewLieuNaissance, textViewSexe;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         @SuppressLint("InflateParams") View v = inflater.inflate(R.layout.fragment_deputy, null);
@@ -46,7 +47,7 @@ public class DeputyFragment extends Fragment implements VoteObserver {
         imageView = v.findViewById(R.id.imageViewDeputy);
         listViewVote = v.findViewById(R.id.listViewVote);
         votes = new ArrayList<>();
-        adapterVote = new VoteAdapter(votes, this);
+        adapterVote = new VoteAdapter(votes, getContext());
         listViewVote.setAdapter(adapterVote);
         return v;
     }
